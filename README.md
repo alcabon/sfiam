@@ -321,6 +321,12 @@ Token Storage:
 
 **PKCE Support:**
 
+You can optionally implement PKCE by including code_challenge and code_verifier parameters when you build variations of the authorization code flow with Salesforce. **These flows support PKCE.**
+
+     -Web server flow
+    - Hybrid web server flow
+    - All variations of the Authorization Code and Credentials Flow, including headless registration, headless passwordless login, and headless guest flows.
+
 *   PKCE helps mitigate authorization code interception attacks, which is particularly important for mobile and single-page applications.  
     Separation of Concerns:
 
