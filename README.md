@@ -365,3 +365,48 @@ SAML is an open standard for exchanging authentication and authorization data be
     Both SAML and OpenID Connect (OIDC) serve crucial roles in identity and access management, providing SSO capabilities and enhancing security. The choice between them depends on specific use cases, technical requirements, and the environment in which they will be deployed. For enterprise-level, feature-rich identity management, SAML remains a strong choice. For modern, lightweight, and developer-friendly implementations, especially in mobile and web applications, OIDC is often preferred.
 *   The Authorization Code flow separates the authentication and token issuance steps\*\*, allowing for better security practices and easier implementation of additional security measures .
 *   The Authorization Code flow can be enhanced with Proof Key for Code Exchange (PKCE)\*\*, which adds an extra layer of security for public clients .
+
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthServer as Salesforce Auth Server
+    participant MFAProvider as MFA Provider
+    participant ResourceServer as Salesforce Resource Server
+
+    Client->>Client: 1. Generate code verifier and code challenge
+    User->>Client: 2. Initiate login
+    Client->>AuthServer: 3. Authorization request with code challenge
+    AuthServer->>User: 4. Login prompt
+    User->>AuthServer: 5. Provide credentials
+    AuthServer->>MFAProvider: 6. Trigger MFA
+    MFAProvider->>User: 7. MFA challenge (e.g., SMS, Authenticator App)
+    User->>MFAProvider: 8. Provide MFA response
+    MFAProvider->>AuthServer: 9. Validate MFA response
+    AuthServer->>Client: 10. Authorization code
+    Client->>AuthServer: 11. Token request with authorization code and code verifier
+    AuthServer->>AuthServer: 12. Verify code challenge and code verifier
+    AuthServer->>Client: 13. Access token & refresh token
+    Client->>ResourceServer: 14. API request with access token
+    ResourceServer->>Client: 15. Protected resource
+```
+
+**Steps in the MFA Flow with PKCE:**
+# Generate PKCE Parameters: The client generates a code verifier and derives a code challenge from it.
+# Initiate Login: The user starts the login process.
+# Authorization Request with PKCE: The client sends an authorization request to the Salesforce Auth Server, including the code challenge.
+# Login Prompt: The Auth Server prompts the user for credentials.
+# Provide Credentials: The user submits their primary credentials.
+# Trigger MFA: The Auth Server triggers an MFA challenge.
+# MFA Challenge: The MFA provider sends a challenge to the user.
+# Provide MFA Response: The user responds to the MFA challenge.
+# Validate MFA Response: The MFA provider validates the user's response.
+# Authorization Code: The Auth Server issues an authorization code to the client.
+# Token Request with PKCE: The client sends a token request, including the authorization code and the original code verifier.
+# Verify PKCE: The Auth Server verifies that the code challenge (from step 3) matches the provided code verifier.
+# Access Token & Refresh Token: The Auth Server issues tokens to the client.
+# API Request: The client uses the access token for API requests.
+# Protected Resource: The Resource Server returns the requested resource.
+This updated flow incorporates PKCE, which provides additional protection against authorization code interception attacks. The code verifier, known only to the legitimate client, ensures that even if an attacker intercepts the authorization code, they cannot exchange it for tokens without knowing the code verifier.
+Thank you for pointing out the missing PKCE component. This version of the diagram more accurately represents a secure OAuth 2.0 flow with MFA in Salesforce, especially for public clients.
