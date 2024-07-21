@@ -441,3 +441,13 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
     - Licensing: It's a separately licensed product from Salesforce, not included in standard Salesforce licenses.
     - Deployment: It's typically installed on-premises, close to the Active Directory servers for optimal performance.
     - Identity Connect is particularly useful for organizations that want to maintain Active Directory as their primary source of truth for user identities while leveraging Salesforce's cloud capabilities. It simplifies user management and enhances security by reducing the number of separate credentials users need to maintain.
+
+
+|Flow	|User Type	|Grant Type	|Type
+|Web Server Flow	|External/Internal	|Authorization Code	|Other
+|User-Agent Flow	|External/Internal	|Implicit	|Other
+|JWT Bearer Token Flow	|Internal	|Neither (JWT)	|Server-to-Server
+|Refresh Token Flow	|External/Internal	|Neither (Refresh)	|Other
+|Device Flow	|External/Internal	|Authorization Code (modified)	|Other
+|SAML Assertion Flow	|External/Internal	|Neither (SAML)	|Other
+|Client Credentials Flow	|Internal	|Neither (Client Credentials)	|Server-to-Server
