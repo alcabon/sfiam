@@ -184,12 +184,12 @@ sequenceDiagram
 ```
 
 **Key points about these hybrid flows:**
-**Hybrid Web Server Flow:**
+- **Hybrid Web Server Flow:**
 This flow combines elements of both the web server flow and the user-agent flow.
 It provides direct management of web sessions for hybrid apps.
 The authorization server grants both an authorization code and an access token in a single response.
 The client can use the authorization code to obtain a refresh token, providing better long-term access management.
-**Hybrid User Agent Token Flow:**
+- **Hybrid User Agent Token Flow:**
 This flow was formerly known as the Hybrid App Token Flow.
 It's designed for hybrid apps that need direct management of web sessions.
 The flow returns both an access token and an ID token.
