@@ -22,6 +22,7 @@ Authorization determines what resources an authenticated user or system can acce
 *   **OAuth 2.0 Flows:**
     *   Web Server Flow
     *   User-Agent Flow
+    *   Client Credentials flow
     *   JWT Bearer Token Flow
     *   Refresh Token Flow
     *   Device Flow
@@ -74,6 +75,22 @@ sequenceDiagram
     AuthServer->>UserAgent: 7. Access token in URL fragment
     UserAgent->>ResourceServer: 8. API request with access token
     ResourceServer->>UserAgent: 9. Protected resource
+```
+
+**Client Credentials flow:**
+
+```mermaid
+sequenceDiagram
+    participant Client
+    participant AuthServer as Authorization Server
+    participant ResourceServer as Resource Server
+
+    Client->>AuthServer: 1. Token Request (client_id, client_secret)
+    AuthServer->>AuthServer: 2. Validate client credentials
+    AuthServer->>Client: 3. Access Token
+    Client->>ResourceServer: 4. API Request with Access Token
+    ResourceServer->>ResourceServer: 5. Validate Access Token
+    ResourceServer->>Client: 6. Protected Resource
 ```
 
 **JWT Bearer Token Flow:**
@@ -413,7 +430,7 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
 
 
 **Salesforce Identity Connect** is a solution that integrates Microsoft Active Directory (AD) with Salesforce, allowing for seamless user authentication and synchronization between the two systems. Here are some key points about Identity Connect:
-    - Purpose: It bridges the gap between on-premises Active Directory and Salesforce's cloud-based identity management.
+    -    Purpose: It bridges the gap between on-premises Active Directory and Salesforce's cloud-based identity management.
     - User Synchronization: Identity Connect keeps user information in sync between Active Directory and Salesforce, ensuring that changes in AD are reflected in Salesforce.
     - Single Sign-On (SSO): It enables SSO capabilities, allowing users to log in to Salesforce using their Active Directory credentials.
     - Just-in-Time Provisioning: When a user authenticates for the first time, Identity Connect can automatically create or update the user's account in Salesforce.
