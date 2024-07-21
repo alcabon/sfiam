@@ -296,6 +296,6 @@ Separation of Concerns:
 Current security best practices recommend using the Authorization Code flow with PKCE instead of the Implicit flow, especially for single-page applications and mobile apps .
     - **Reduced Token Exposure:**
 In the Authorization Code flow, the access token is exchanged server-side, reducing exposure to potentially malicious client-side scripts .
-Better Support for Mobile and Desktop Apps:
+     - **Better Support for Mobile and Desktop Apps:**
 The Authorization Code flow with PKCE is better suited for mobile and desktop applications, where secure storage of client secrets may be challenging .
 These technical reasons make the Authorization Code flow (especially when combined with PKCE) a more secure and flexible choice compared to the Implicit flow for most modern application scenarios.
