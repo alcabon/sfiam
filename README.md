@@ -430,6 +430,7 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
 
 
 **Salesforce Identity Connect** is a solution that integrates Microsoft Active Directory (AD) with Salesforce, allowing for seamless user authentication and synchronization between the two systems. Here are some key points about Identity Connect:
+
     1. Purpose: It bridges the gap between on-premises Active Directory and Salesforce's cloud-based identity management.
     2. User Synchronization: Identity Connect keeps user information in sync between Active Directory and Salesforce, ensuring that changes in AD are reflected in Salesforce.
     3. Single Sign-On (SSO): It enables SSO capabilities, allowing users to log in to Salesforce using their Active Directory credentials.
