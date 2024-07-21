@@ -286,7 +286,7 @@ This additional layer of security helps prevent unauthorized clients from obtain
 The Implicit flow typically does not provide refresh tokens due to security concerns.
 Token Storage:
 - **In the Authorization Code flow**, tokens can be securely stored on the server-side, reducing the risk of client-side exposure .
-PKCE Support:
+* **PKCE Support:**
 - **The Authorization Code flow can be enhanced with Proof Key for Code Exchange (PKCE)**, which adds an extra layer of security for public clients .
 PKCE helps mitigate authorization code interception attacks, which is particularly important for mobile and single-page applications.
 Separation of Concerns:
