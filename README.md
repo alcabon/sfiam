@@ -282,15 +282,15 @@ In the Authorization Code flow, the access token is not exposed in the browser's
     - **The Authorization Code flow allows for client authentication using a client secret**, which is not possible with the Implicit flow .
 This additional layer of security helps prevent unauthorized clients from obtaining access tokens.
 * **Refresh Tokens:**
-    - **The Authorization Code flow can return refresh tokens**, allowing for longer sessions and better user experience .
+      -   **The Authorization Code flow can return refresh tokens**, allowing for longer sessions and better user experience .
 The Implicit flow typically does not provide refresh tokens due to security concerns.
 Token Storage:
-    - **In the Authorization Code flow**, tokens can be securely stored on the server-side, reducing the risk of client-side exposure .
+    -    **In the Authorization Code flow**, tokens can be securely stored on the server-side, reducing the risk of client-side exposure .
 * **PKCE Support:**
-    - **The Authorization Code flow can be enhanced with Proof Key for Code Exchange (PKCE)**, which adds an extra layer of security for public clients .
+    -     **The Authorization Code flow can be enhanced with Proof Key for Code Exchange (PKCE)**, which adds an extra layer of security for public clients .
 PKCE helps mitigate authorization code interception attacks, which is particularly important for mobile and single-page applications.
 Separation of Concerns:
-    - **The Authorization Code flow separates the authentication and token issuance steps**, allowing for better security practices and easier implementation of additional security measures .
+    -     **The Authorization Code flow separates the authentication and token issuance steps**, allowing for better security practices and easier implementation of additional security measures .
 
 * **Compliance with Best Practices:**
 Current security best practices recommend using the Authorization Code flow with PKCE instead of the Implicit flow, especially for single-page applications and mobile apps .
