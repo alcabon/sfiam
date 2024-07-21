@@ -219,7 +219,7 @@ Implicit Flow
 *   API Request with Access Token: The client application uses the access token to make API requests to the resource server.
 *   Protected Resource: The resource server returns the protected resource to the client application.
 
-```
+```mermaid
 sequenceDiagram
     participant User
     participant Client
@@ -253,7 +253,7 @@ The Authorization Code Flow with PKCE involves the following steps:
 *   API Request with Access Token: The client application uses the access token to make API requests to the resource server.
 *   Protected Resource: The resource server returns the protected resource to the client application.
 
-```
+```mermaid
 sequenceDiagram
     participant User
     participant Client
