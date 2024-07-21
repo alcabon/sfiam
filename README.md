@@ -35,7 +35,7 @@ These flows can be used in various combinations depending on the specific use ca
 It's worth noting that Salesforce provides flexibility in implementing these flows, allowing organizations to choose the most appropriate methods for their security needs and user experience requirements.
 
 
-Web Server Flow:
+**Web Server Flow:**
 ```mermaid
 sequenceDiagram
     participant User
@@ -56,7 +56,7 @@ sequenceDiagram
     ResourceServer->>Client: 11. Protected resource
 ```
 
-User-Agent Flow:
+**User-Agent Flow:**
 ```mermaid
 sequenceDiagram
     participant User
@@ -75,7 +75,7 @@ sequenceDiagram
     ResourceServer->>UserAgent: 9. Protected resource
 ```
 
-JWT Bearer Token Flow:
+**JWT Bearer Token Flow:**
 ```mermaid
 sequenceDiagram
     participant Client
@@ -90,7 +90,7 @@ sequenceDiagram
     ResourceServer->>Client: 6. Protected resource
 ```
 
-Refresh Token Flow:
+**Refresh Token Flow:**
 ```mermaid
 sequenceDiagram
     participant Client
@@ -104,7 +104,7 @@ sequenceDiagram
     ResourceServer->>Client: 5. Protected resource
 ```
 
-Device Flow:
+**Device Flow:**
 ```mermaid
 sequenceDiagram
     participant Device
@@ -126,7 +126,7 @@ sequenceDiagram
     ResourceServer->>Device: 12. Protected resource
 ```
 
-SAML Assertion Flow:
+**SAML Assertion Flow:**
 ```mermaid
 sequenceDiagram
     participant Client
@@ -142,3 +142,56 @@ sequenceDiagram
     Client->>ResourceServer: 6. API request with access token
     ResourceServer->>Client: 7. Protected resource
 ```
+**Hybrid Web Server Flow:**
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthServer as Salesforce Auth Server
+    participant ResourceServer as Salesforce Resource Server
+
+    User->>Client: 1. Initiate login
+    Client->>AuthServer: 2. Authorization request
+    AuthServer->>User: 3. Login prompt
+    User->>AuthServer: 4. Provide credentials
+    AuthServer->>User: 5. Consent screen
+    User->>AuthServer: 6. Grant consent
+    AuthServer->>Client: 7. Authorization code & access token
+    Client->>AuthServer: 8. Token request with auth code
+    AuthServer->>Client: 9. Refresh token
+    Client->>ResourceServer: 10. API request with access token
+    ResourceServer->>Client: 11. Protected resource
+```
+
+**Hybrid User Agent Token Flow (formerly Hybrid App Token Flow):**
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthServer as Salesforce Auth Server
+    participant ResourceServer as Salesforce Resource Server
+
+    User->>Client: 1. Initiate login
+    Client->>AuthServer: 2. Authorization request
+    AuthServer->>User: 3. Login prompt
+    User->>AuthServer: 4. Provide credentials
+    AuthServer->>User: 5. Consent screen
+    User->>AuthServer: 6. Grant consent
+    AuthServer->>Client: 7. Access token & ID token
+    Client->>Client: 8. Store tokens securely
+    Client->>ResourceServer: 9. API request with access token
+    ResourceServer->>Client: 10. Protected resource
+```
+
+**Key points about these hybrid flows:**
+**Hybrid Web Server Flow:**
+This flow combines elements of both the web server flow and the user-agent flow.
+It provides direct management of web sessions for hybrid apps.
+The authorization server grants both an authorization code and an access token in a single response.
+The client can use the authorization code to obtain a refresh token, providing better long-term access management.
+**Hybrid User Agent Token Flow:**
+This flow was formerly known as the Hybrid App Token Flow.
+It's designed for hybrid apps that need direct management of web sessions.
+The flow returns both an access token and an ID token.
+It provides a higher level of security compared to the standard user-agent flow, as tokens are not exposed in the URL.
+Both of these hybrid flows offer enhanced security and flexibility for applications that combine elements of web and native apps. They allow for better session management and can provide a smoother user experience while maintaining robust security measures
