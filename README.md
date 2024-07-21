@@ -20,15 +20,15 @@ Authentication verifies the identity of a user or system.
 Authorization determines what resources an authenticated user or system can access.
 
 *   **OAuth 2.0 Flows:**
-    ## Web Server Flow  
-    ## User-Agent Flow  
-    ## JWT Bearer Token Flow  
-    ## Refresh Token Flow  
-    ## Device Flow  
-    ## SAML Assertion Flow
+    ** Web Server Flow  
+    ** User-Agent Flow  
+    ** JWT Bearer Token Flow  
+    ** Refresh Token Flow  
+    ** Device Flow  
+    ** SAML Assertion Flow
 *   **Hybrid Flows**:
-    ## Hybrid Web Server Flow  
-    ## Hybrid User Agent Token Flow (formerly Hybrid App Token Flow)
+    ** Hybrid Web Server Flow  
+    ** Hybrid User Agent Token Flow (formerly Hybrid App Token Flow)
 *   **Server-to-Server Flows**
 
 These flows can be used in various combinations depending on the specific use case and security requirements. For example, a user might authenticate using SSO with MFA, and then be authorized to access certain resources through an OAuth 2.0 flow.  
