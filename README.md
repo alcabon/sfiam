@@ -277,8 +277,8 @@ In summary, **the User-Agent Flow itself does not use PKCE**. Instead, the recom
 There are several technical reasons **why the Authorization Code flow is preferred over the Implicit flow:**
 * **Security of Access Token:**
 In the Authorization Code flow, the access token is not exposed in the browser's URL or history, reducing the risk of token leakage .
-The Implicit flow passes the access token directly in the URL fragment, making it more vulnerable to interception .
-Client Authentication:
+**The Implicit flow passes the access token directly in the URL fragment, making it more vulnerable to interception.**
+* **Client Authentication:**
 - **The Authorization Code flow allows for client authentication using a client secret**, which is not possible with the Implicit flow .
 This additional layer of security helps prevent unauthorized clients from obtaining access tokens.
 * **Refresh Tokens:**
