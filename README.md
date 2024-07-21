@@ -195,3 +195,72 @@ It's designed for hybrid apps that need direct management of web sessions.
 The flow returns both an access token and an ID token.
 It provides a higher level of security compared to the standard user-agent flow, as tokens are not exposed in the URL.
 Both of these hybrid flows offer enhanced security and flexibility for applications that combine elements of web and native apps. They allow for better session management and can provide a smoother user experience while maintaining robust security measures
+
+
+The **OAuth 2.0 implicit grant type** is used in the Implicit Flow. This flow is specifically designed for public clients, such as mobile applications or pure JavaScript front-end applications, where the access token is returned immediately without an extra authorization code exchange step.
+Implicit Flow
+- The Implicit Flow is characterized by the following steps:
+- Initiate Login: The user initiates the login process.
+- Authorization Request: The client application sends an authorization request to the authorization server.
+- Login Prompt: The authorization server prompts the user to log in.
+- User Provides Credentials: The user provides their credentials.
+- Consent Screen: The authorization server displays a consent screen to the user.
+- Grant Consent: The user grants consent.
+- Access Token in URL Fragment: The authorization server redirects the user back to the client application with an access token in the URL fragment.
+- API Request with Access Token: The client application uses the access token to make API requests to the resource server.
+- Protected Resource: The resource server returns the protected resource to the client application.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthServer as Authorization Server
+    participant ResourceServer as Resource Server
+
+    User->>Client: 1. Initiate login
+    Client->>AuthServer: 2. Authorization request
+    AuthServer->>User: 3. Login prompt
+    User->>AuthServer: 4. Provide credentials
+    AuthServer->>User: 5. Consent screen
+    User->>AuthServer: 6. Grant consent
+    AuthServer->>Client: 7. Access token in URL fragment
+    Client->>ResourceServer: 8. API request with access token
+    ResourceServer->>Client: 9. Protected resource
+```
+
+**Non-Implicit Type: Authorization Code Flow with PKCE**
+The non-implicit type that is recommended as a replacement for the implicit grant type is the Authorization Code Flow with **PKCE (Proof Key for Code Exchange)**. This flow is more secure and is recommended for public clients, including single-page applications (SPAs) and native apps.
+The Authorization Code Flow with PKCE involves the following steps:
+* Initiate Login: The user initiates the login process.
+* Authorization Request with Code Challenge: The client application sends an authorization request to the authorization server, including a code challenge.
+* Login Prompt: The authorization server prompts the user to log in.
+* User Provides Credentials: The user provides their credentials.
+* Consent Screen: The authorization server displays a consent screen to the user.
+* Grant Consent: The user grants consent.
+* Authorization Code: The authorization server redirects the user back to the client application with an authorization code.
+* Token Request with Code Verifier: The client application sends a token request to the authorization server, including the code verifier.
+* Access Token & Refresh Token: The authorization server returns an access token and a refresh token to the client application.
+* API Request with Access Token: The client application uses the access token to make API requests to the resource server.
+* Protected Resource: The resource server returns the protected resource to the client application.
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Client
+    participant AuthServer as Authorization Server
+    participant ResourceServer as Resource Server
+
+    User->>Client: 1. Initiate login
+    Client->>AuthServer: 2. Authorization request with code challenge
+    AuthServer->>User: 3. Login prompt
+    User->>AuthServer: 4. Provide credentials
+    AuthServer->>User: 5. Consent screen
+    User->>AuthServer: 6. Grant consent
+    AuthServer->>Client: 7. Authorization code
+    Client->>AuthServer: 8. Token request with code verifier
+    AuthServer->>Client: 9. Access token & refresh token
+    Client->>ResourceServer: 10. API request with access token
+    ResourceServer->>Client: 11. Protected resource
+```
+
+In summary, the Implicit Flow is used for public clients where the access token is returned directly, but it is no longer recommended due to security concerns. The Authorization Code Flow with PKCE is the preferred alternative, providing enhanced security by including an additional step of exchanging an authorization code for tokens.
