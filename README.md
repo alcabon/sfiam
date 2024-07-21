@@ -264,3 +264,12 @@ sequenceDiagram
 ```
 
 In summary, the Implicit Flow is used for public clients where the access token is returned directly, but it is no longer recommended due to security concerns. The Authorization Code Flow with PKCE is the preferred alternative, providing enhanced security by including an additional step of exchanging an authorization code for tokens.
+
+
+The traditional **User-Agent Flow** does not use PKCE. It typically uses the OAuth 2.0 implicit grant type, which has some security vulnerabilities .
+Due to security issues with the User-Agent Flow, it is recommended to use the Authorization Code Flow with Proof Key for Code Exchange (PKCE) instead .
+The transition from User-Agent Flow to Authorization Code Flow with PKCE is considered an enhancement in security, especially for mobile and desktop applications 
+PKCE was introduced to address the security vulnerabilities in the implicit grant type used by the User-Agent Flow .
+Starting with **Salesforce Mobile SDK 11.0**, the default authentication on both iOS and Android platforms uses the OAuth 2.0 Web Server Flow with PKCE for increased security, replacing the previous User-Agent Flow .
+While it's possible to continue using the User-Agent Flow in newer versions of the Salesforce Mobile SDK, it's not recommended due to security concerns .
+In summary, **the User-Agent Flow itself does not use PKCE**. Instead, the recommendation is to transition from the User-Agent Flow to the Authorization Code Flow with PKCE for improved security, especially in mobile and desktop applications. This transition represents a shift from the implicit grant type to a more secure authorization code grant type with the added protection of PKCE.
