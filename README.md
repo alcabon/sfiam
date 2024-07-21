@@ -35,7 +35,27 @@ Authorization determines what resources an authenticated user or system can acce
 These flows can be used in various combinations depending on the specific use case and security requirements. For example, a user might authenticate using SSO with MFA, and then be authorized to access certain resources through an OAuth 2.0 flow.  
 It's worth noting that Salesforce provides flexibility in implementing these flows, allowing organizations to choose the most appropriate methods for their security needs and user experience requirements.
 
-**Web Server Flow:**
+**User-Agent Flow:**  Implicit grant type
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant UserAgent as User Agent (Browser)
+    participant AuthServer as Salesforce Auth Server
+    participant ResourceServer as Salesforce Resource Server
+
+    User->>UserAgent: 1. Initiate login
+    UserAgent->>AuthServer: 2. Authorization request
+    AuthServer->>User: 3. Login prompt
+    User->>AuthServer: 4. Provide credentials
+    AuthServer->>User: 5. Consent screen
+    User->>AuthServer: 6. Grant consent
+    AuthServer->>UserAgent: 7. Access token in URL fragment
+    UserAgent->>ResourceServer: 8. API request with access token
+    ResourceServer->>UserAgent: 9. Protected resource
+```
+
+**Web Server Flow:** : Authorization Code Flow
 
 ```mermaid
 sequenceDiagram
@@ -55,26 +75,6 @@ sequenceDiagram
     AuthServer->>Client: 9. Access token & refresh token
     Client->>ResourceServer: 10. API request with access token
     ResourceServer->>Client: 11. Protected resource
-```
-
-**User-Agent Flow:**
-
-```mermaid
-sequenceDiagram
-    participant User
-    participant UserAgent as User Agent (Browser)
-    participant AuthServer as Salesforce Auth Server
-    participant ResourceServer as Salesforce Resource Server
-
-    User->>UserAgent: 1. Initiate login
-    UserAgent->>AuthServer: 2. Authorization request
-    AuthServer->>User: 3. Login prompt
-    User->>AuthServer: 4. Provide credentials
-    AuthServer->>User: 5. Consent screen
-    User->>AuthServer: 6. Grant consent
-    AuthServer->>UserAgent: 7. Access token in URL fragment
-    UserAgent->>ResourceServer: 8. API request with access token
-    ResourceServer->>UserAgent: 9. Protected resource
 ```
 
 **Client Credentials flow:**
@@ -453,3 +453,69 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
 |Device Flow|External/Internal|Authorization Code (modified)|Other|
 |SAML Assertion Flow|External/Internal|Neither (SAML)|Other|
 |Client Credentials Flow|Internal|Neither (Client Credentials)|Server-to-Server|
+
+
+**SAML Sequence Diagrams for Service Provider (SP) Initiated and Identity Provider (IdP) Initiated Setups**
+1. **Service Provider (SP) Initiated SSO**
+In an SP-initiated SSO setup, the authentication process is initiated by the Service Provider (e.g., Salesforce). Here is the sequence diagram for this flow:
+```mermaid
+sequenceDiagram
+    participant User
+    participant SP as Service Provider (SP)
+    participant IdP as Identity Provider (IdP)
+
+    User->>SP: 1. Access protected resource
+    SP->>IdP: 2. SAML Authentication Request
+    IdP->>User: 3. Redirect to IdP login page
+    User->>IdP: 4. Provide credentials
+    IdP->>IdP: 5. Authenticate user
+    IdP->>User: 6. Redirect to SP with SAML Response
+    User->>SP: 7. Submit SAML Response
+    SP->>SP: 8. Validate SAML Response
+    SP->>User: 9. Grant access to protected resource
+```
+
+Steps:
+Access Protected Resource: The user attempts to access a protected resource on the Service Provider.
+SAML Authentication Request: The SP generates a SAML authentication request and redirects the user to the Identity Provider (IdP).
+Redirect to IdP Login Page: The IdP receives the request and redirects the user to its login page.
+Provide Credentials: The user provides their credentials to the IdP.
+Authenticate User: The IdP authenticates the user.
+Redirect to SP with SAML Response: Upon successful authentication, the IdP generates a SAML response and redirects the user back to the SP with this response.
+Submit SAML Response: The user submits the SAML response to the SP.
+Validate SAML Response: The SP validates the SAML response.
+Grant Access: If the validation is successful, the SP grants the user access to the protected resource.
+
+**2. Identity Provider (IdP) Initiated SSO**
+In an IdP-initiated SSO setup, the authentication process is initiated by the Identity Provider. Here is the sequence diagram for this flow:
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant IdP as Identity Provider (IdP)
+    participant SP as Service Provider (SP)
+
+    User->>IdP: 1. Access IdP login page
+    IdP->>User: 2. Provide credentials
+    User->>IdP: 3. Submit credentials
+    IdP->>IdP: 4. Authenticate user
+    IdP->>User: 5. Redirect to SP with SAML Response
+    User->>SP: 6. Submit SAML Response
+    SP->>SP: 7. Validate SAML Response
+    SP->>User: 8. Grant access to protected resource
+```
+
+Steps:
+Access IdP Login Page: The user navigates directly to the IdP's login page.
+Provide Credentials: The IdP prompts the user to provide their credentials.
+Submit Credentials: The user submits their credentials to the IdP.
+Authenticate User: The IdP authenticates the user.
+Redirect to SP with SAML Response: Upon successful authentication, the IdP generates a SAML response and redirects the user to the SP with this response.
+Submit SAML Response: The user submits the SAML response to the SP.
+Validate SAML Response: The SP validates the SAML response.
+Grant Access: If the validation is successful, the SP grants the user access to the protected resource.
+Summary
+Both SP-initiated and IdP-initiated SSO setups involve the exchange of SAML authentication requests and responses between the Service Provider and the Identity Provider. The key difference lies in where the authentication process is initiated:
+SP-Initiated SSO: The process starts at the Service Provider, which redirects the user to the Identity Provider for authentication.
+IdP-Initiated SSO: The process starts at the Identity Provider, which authenticates the user and then redirects them to the Service Provider with a SAML response.
+These sequence diagrams illustrate the typical steps involved in each flow, highlighting the interactions between the user, the Service Provider, and the Identity Provider.
