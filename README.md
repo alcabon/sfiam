@@ -36,7 +36,7 @@ It's worth noting that Salesforce provides flexibility in implementing these flo
 
 **Web Server Flow:**
 
-```
+```mermaid
 sequenceDiagram
     participant User
     participant Client
@@ -58,7 +58,7 @@ sequenceDiagram
 
 **User-Agent Flow:**
 
-```
+```mermaid
 sequenceDiagram
     participant User
     participant UserAgent as User Agent (Browser)
@@ -78,7 +78,7 @@ sequenceDiagram
 
 **JWT Bearer Token Flow:**
 
-```
+```mermaid
 sequenceDiagram
     participant Client
     participant AuthServer as Salesforce Auth Server
@@ -94,7 +94,7 @@ sequenceDiagram
 
 **Refresh Token Flow:**
 
-```
+```mermaid
 sequenceDiagram
     participant Client
     participant AuthServer as Salesforce Auth Server
@@ -109,7 +109,7 @@ sequenceDiagram
 
 **Device Flow:**
 
-```
+```mermaid
 sequenceDiagram
     participant Device
     participant User
@@ -132,7 +132,7 @@ sequenceDiagram
 
 **SAML Assertion Flow:**
 
-```
+```mermaid
 sequenceDiagram
     participant Client
     participant IdP as Identity Provider
@@ -150,7 +150,7 @@ sequenceDiagram
 
 **Hybrid Web Server Flow:**
 
-```
+```mermaid
 sequenceDiagram
     participant User
     participant Client
@@ -172,7 +172,7 @@ sequenceDiagram
 
 **Hybrid User Agent Token Flow (formerly Hybrid App Token Flow):**
 
-```
+```mermaid
 sequenceDiagram
     participant User
     participant Client
