@@ -445,7 +445,7 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
 
 ||Flow||User Type||Grant Type||Type||
 |Web Server Flow|External/Internal|Authorization Code|Other|
-|User-Agent Flow|External/Internal|Implicit	|Other|
+|User-Agent Flow|External/Internal|Implicit|Other|
 |JWT Bearer Token Flow|Internal	|Neither (JWT)|Server-to-Server|
 |Refresh Token Flow|External/Internal|Neither (Refresh)|Other|
 |Device Flow|External/Internal|Authorization Code (modified)|Other|
