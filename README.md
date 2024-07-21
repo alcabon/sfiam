@@ -443,7 +443,8 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
     - Identity Connect is particularly useful for organizations that want to maintain Active Directory as their primary source of truth for user identities while leveraging Salesforce's cloud capabilities. It simplifies user management and enhances security by reducing the number of separate credentials users need to maintain.
 
 
-||Flow||User Type||Grant Type||Type||
+|Flow|User Type|Grant Type|Type|
+|----|---------|----------|----|
 |Web Server Flow|External/Internal|Authorization Code|Other|
 |User-Agent Flow|External/Internal|Implicit|Other|
 |JWT Bearer Token Flow|Internal|Neither (JWT)|Server-to-Server|
