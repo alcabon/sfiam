@@ -476,15 +476,17 @@ sequenceDiagram
 ```
 
 Steps:
-Access Protected Resource: The user attempts to access a protected resource on the Service Provider.
-SAML Authentication Request: The SP generates a SAML authentication request and redirects the user to the Identity Provider (IdP).
-Redirect to IdP Login Page: The IdP receives the request and redirects the user to its login page.
-Provide Credentials: The user provides their credentials to the IdP.
-Authenticate User: The IdP authenticates the user.
-Redirect to SP with SAML Response: Upon successful authentication, the IdP generates a SAML response and redirects the user back to the SP with this response.
-Submit SAML Response: The user submits the SAML response to the SP.
-Validate SAML Response: The SP validates the SAML response.
-Grant Access: If the validation is successful, the SP grants the user access to the protected resource.
+- Access Protected Resource: The user attempts to access a protected resource on the Service Provider.
+- SAML Authentication Request: The SP generates a SAML authentication request and redirects the user to the Identity Provider (IdP).
+- Redirect to IdP Login Page: The IdP receives the request and redirects the user to its login page.
+- Provide Credentials: The user provides their credentials to the IdP.
+- Authenticate User: The IdP authenticates the user.
+- Redirect to SP with SAML Response: Upon successful authentication, the IdP generates a SAML response and redirects the user back to the SP with this response.
+- Submit SAML Response: The user submits the SAML response to the SP.
+- Validate SAML Response: The SP validates the SAML response.
+- Grant Access: If the validation is successful, the SP grants the user access to the protected resource.
+
+**Note:** Setting up your current SAML SSO integration to work within Salesforce Mobile Applications may require changes to both your Identity Provider (IDP) and Salesforce Organization. **Salesforce Mobile Applications will only work with Service Provider Initiated setups.**  If you currently use IDP Initiated authentication, you need to change to Service Provider Initiated for mobile SSO Best Practice.
 
 **2. Identity Provider (IdP) Initiated SSO**
 In an IdP-initiated SSO setup, the authentication process is initiated by the Identity Provider. Here is the sequence diagram for this flow:
@@ -506,16 +508,16 @@ sequenceDiagram
 ```
 
 Steps:
-Access IdP Login Page: The user navigates directly to the IdP's login page.
-Provide Credentials: The IdP prompts the user to provide their credentials.
-Submit Credentials: The user submits their credentials to the IdP.
-Authenticate User: The IdP authenticates the user.
-Redirect to SP with SAML Response: Upon successful authentication, the IdP generates a SAML response and redirects the user to the SP with this response.
-Submit SAML Response: The user submits the SAML response to the SP.
-Validate SAML Response: The SP validates the SAML response.
-Grant Access: If the validation is successful, the SP grants the user access to the protected resource.
+- Access IdP Login Page: The user navigates directly to the IdP's login page.
+- Provide Credentials: The IdP prompts the user to provide their credentials.
+- Submit Credentials: The user submits their credentials to the IdP.
+- Authenticate User: The IdP authenticates the user.
+- Redirect to SP with SAML Response: Upon successful authentication, the IdP generates a SAML response and redirects the user to the SP with this response.
+- Submit SAML Response: The user submits the SAML response to the SP.
+- Validate SAML Response: The SP validates the SAML response.
+- Grant Access: If the validation is successful, the SP grants the user access to the protected resource.
 Summary
-Both SP-initiated and IdP-initiated SSO setups involve the exchange of SAML authentication requests and responses between the Service Provider and the Identity Provider. The key difference lies in where the authentication process is initiated:
-SP-Initiated SSO: The process starts at the Service Provider, which redirects the user to the Identity Provider for authentication.
-IdP-Initiated SSO: The process starts at the Identity Provider, which authenticates the user and then redirects them to the Service Provider with a SAML response.
+- Both SP-initiated and IdP-initiated SSO setups involve the exchange of SAML authentication requests and responses between the Service Provider and - the Identity Provider. The key difference lies in where the authentication process is initiated:
+- SP-Initiated SSO: The process starts at the Service Provider, which redirects the user to the Identity Provider for authentication.
+- IdP-Initiated SSO: The process starts at the Identity Provider, which authenticates the user and then redirects them to the Service Provider with a SAML response.
 These sequence diagrams illustrate the typical steps involved in each flow, highlighting the interactions between the user, the Service Provider, and the Identity Provider.
