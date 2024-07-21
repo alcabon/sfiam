@@ -531,7 +531,7 @@ These sequence diagrams illustrate the typical steps involved in each flow, high
 
 
 **"headless" in the context of headless flows typically means:**
-- No User Interface: Headless flows operate without a graphical user interface (GUI). They are designed to run in the background without direct user interaction .
+- **No User Interface**: Headless flows operate without a graphical user interface (GUI). They are designed to run in the background without direct user interaction .
 - Automation Without Screens: In Salesforce, headless flows allow triggering of flows from workflows without the need for screens, essentially enabling declarative programming .
 - Backend Processing: These flows are used for backend processes and integrations where visual interaction is not necessary or possible .    
 - API-Driven: Headless flows are often controlled and executed through API calls rather than through a user interface .
