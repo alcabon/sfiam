@@ -393,20 +393,20 @@ sequenceDiagram
 ```
 
 **Steps in the MFA Flow with PKCE:**
-  - # Generate PKCE Parameters: The client generates a code verifier and derives a code challenge from it.
-  - # Initiate Login: The user starts the login process.
-  - # Authorization Request with PKCE: The client sends an authorization request to the Salesforce Auth Server, including the code challenge. 
-  - # Login Prompt: The Auth Server prompts the user for credentials.
-  - # Provide Credentials: The user submits their primary credentials.
-  - # Trigger MFA: The Auth Server triggers an MFA challenge.
-  - # MFA Challenge: The MFA provider sends a challenge to the user.
-  - # Provide MFA Response: The user responds to the MFA challenge.
-  - # Validate MFA Response: The MFA provider validates the user's response.
-  - # Authorization Code: The Auth Server issues an authorization code to the client.
-  - # Token Request with PKCE: The client sends a token request, including the authorization code and the original code verifier.
-  - # Verify PKCE: The Auth Server verifies that the code challenge (from step 3) matches the provided code verifier.
-  - # Access Token & Refresh Token: The Auth Server issues tokens to the client.
-  - # API Request: The client uses the access token for API requests.
-  - # Protected Resource: The Resource Server returns the requested resource.
+  - Generate PKCE Parameters: The client generates a code verifier and derives a code challenge from it.
+  - Initiate Login: The user starts the login process.
+  - Authorization Request with PKCE: The client sends an authorization request to the Salesforce Auth Server, including the code challenge. 
+  - Login Prompt: The Auth Server prompts the user for credentials.
+  - Provide Credentials: The user submits their primary credentials.
+  - Trigger MFA: The Auth Server triggers an MFA challenge.
+  - MFA Challenge: The MFA provider sends a challenge to the user.
+  - Provide MFA Response: The user responds to the MFA challenge.
+  - Validate MFA Response: The MFA provider validates the user's response.
+  - Authorization Code: The Auth Server issues an authorization code to the client.
+  - Token Request with PKCE: The client sends a token request, including the authorization code and the original code verifier.
+  - Verify PKCE: The Auth Server verifies that the code challenge (from step 3) matches the provided code verifier.
+  - Access Token & Refresh Token: The Auth Server issues tokens to the client.
+  - API Request: The client uses the access token for API requests.
+  - Protected Resource: The Resource Server returns the requested resource.
 This updated flow incorporates PKCE, which provides additional protection against authorization code interception attacks. The code verifier, known only to the legitimate client, ensures that even if an attacker intercepts the authorization code, they cannot exchange it for tokens without knowing the code verifier.
 Thank you for pointing out the missing PKCE component. This version of the diagram more accurately represents a secure OAuth 2.0 flow with MFA in Salesforce, especially for public clients.
