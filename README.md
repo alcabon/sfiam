@@ -430,7 +430,7 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
 
 
 **Salesforce Identity Connect** is a solution that integrates Microsoft Active Directory (AD) with Salesforce, allowing for seamless user authentication and synchronization between the two systems. Here are some key points about Identity Connect:
-    -    Purpose: It bridges the gap between on-premises Active Directory and Salesforce's cloud-based identity management.
+    - Purpose: It bridges the gap between on-premises Active Directory and Salesforce's cloud-based identity management.
     - User Synchronization: Identity Connect keeps user information in sync between Active Directory and Salesforce, ensuring that changes in AD are reflected in Salesforce.
     - Single Sign-On (SSO): It enables SSO capabilities, allowing users to log in to Salesforce using their Active Directory credentials.
     - Just-in-Time Provisioning: When a user authenticates for the first time, Identity Connect can automatically create or update the user's account in Salesforce.
@@ -443,11 +443,11 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
     - Identity Connect is particularly useful for organizations that want to maintain Active Directory as their primary source of truth for user identities while leveraging Salesforce's cloud capabilities. It simplifies user management and enhances security by reducing the number of separate credentials users need to maintain.
 
 
-|Flow	|User Type	|Grant Type	|Type
-|Web Server Flow	|External/Internal	|Authorization Code	|Other
-|User-Agent Flow	|External/Internal	|Implicit	|Other
-|JWT Bearer Token Flow	|Internal	|Neither (JWT)	|Server-to-Server
-|Refresh Token Flow	|External/Internal	|Neither (Refresh)	|Other
-|Device Flow	|External/Internal	|Authorization Code (modified)	|Other
-|SAML Assertion Flow	|External/Internal	|Neither (SAML)	|Other
-|Client Credentials Flow	|Internal	|Neither (Client Credentials)	|Server-to-Server
+||Flow	||User Type	||Grant Type	||Type||
+|Web Server Flow	|External/Internal	|Authorization Code	|Other|
+|User-Agent Flow	|External/Internal	|Implicit	|Other|
+|JWT Bearer Token Flow	|Internal	|Neither (JWT)	|Server-to-Server|
+|Refresh Token Flow	|External/Internal	|Neither (Refresh)	|Other|
+|Device Flow	|External/Internal	|Authorization Code (modified)	|Other|
+|SAML Assertion Flow	|External/Internal	|Neither (SAML)	|Other|
+|Client Credentials Flow	|Internal	|Neither (Client Credentials)	|Server-to-Server|
