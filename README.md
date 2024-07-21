@@ -527,7 +527,7 @@ These sequence diagrams illustrate the typical steps involved in each flow, high
 |Refresh Token Flow|Internal/External|Refresh||Long-lived sessions|Desktop/Mobile|
 |Device Flow|Internal/External|Authorization Code (modified)||Devices with limited input capabilities|Desktop/IoT|
 |SAML Assertion Flow|Internal/External|SAML||Federated identity scenarios|Desktop/Mobile|
-|Headless Identity Flows|External|Authorization Code and Credentials Flow||Apps that complement a customer-facing Experience Cloud site Standalone apps. Users interact with and log in to your app, but not an Experience Cloud site.|Headless (no UI)|
+|Headless Identity Flows|External|Authorization Code and Credentials Flow||Apps that complement a customer-facing Experience Cloud site Standalone apps. Users interact with and log in to your app, but not an Experience Cloud site.|o Headless Login API|
 
 
 
