@@ -273,3 +273,29 @@ PKCE was introduced to address the security vulnerabilities in the implicit gran
 Starting with **Salesforce Mobile SDK 11.0**, the default authentication on both iOS and Android platforms uses the OAuth 2.0 Web Server Flow with PKCE for increased security, replacing the previous User-Agent Flow .
 While it's possible to continue using the User-Agent Flow in newer versions of the Salesforce Mobile SDK, it's not recommended due to security concerns .
 In summary, **the User-Agent Flow itself does not use PKCE**. Instead, the recommendation is to transition from the User-Agent Flow to the Authorization Code Flow with PKCE for improved security, especially in mobile and desktop applications. This transition represents a shift from the implicit grant type to a more secure authorization code grant type with the added protection of PKCE.
+
+There are several technical reasons **why the Authorization Code flow is preferred over the Implicit flow:**
+* **Security of Access Token:**
+In the Authorization Code flow, the access token is not exposed in the browser's URL or history, reducing the risk of token leakage .
+The Implicit flow passes the access token directly in the URL fragment, making it more vulnerable to interception .
+Client Authentication:
+- **The Authorization Code flow allows for client authentication using a client secret**, which is not possible with the Implicit flow .
+This additional layer of security helps prevent unauthorized clients from obtaining access tokens.
+* **Refresh Tokens:**
+- **The Authorization Code flow can return refresh tokens**, allowing for longer sessions and better user experience .
+The Implicit flow typically does not provide refresh tokens due to security concerns.
+Token Storage:
+- **In the Authorization Code flow**, tokens can be securely stored on the server-side, reducing the risk of client-side exposure .
+PKCE Support:
+- **The Authorization Code flow can be enhanced with Proof Key for Code Exchange (PKCE)**, which adds an extra layer of security for public clients .
+PKCE helps mitigate authorization code interception attacks, which is particularly important for mobile and single-page applications.
+Separation of Concerns:
+- **The Authorization Code flow separates the authentication and token issuance steps**, allowing for better security practices and easier implementation of additional security measures .
+
+* **Compliance with Best Practices:**
+Current security best practices recommend using the Authorization Code flow with PKCE instead of the Implicit flow, especially for single-page applications and mobile apps .
+- **Reduced Token Exposure:**
+In the Authorization Code flow, the access token is exchanged server-side, reducing exposure to potentially malicious client-side scripts .
+Better Support for Mobile and Desktop Apps:
+The Authorization Code flow with PKCE is better suited for mobile and desktop applications, where secure storage of client secrets may be challenging .
+These technical reasons make the Authorization Code flow (especially when combined with PKCE) a more secure and flexible choice compared to the Implicit flow for most modern application scenarios.
