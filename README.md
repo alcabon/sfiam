@@ -444,16 +444,6 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
     11. Identity Connect is particularly useful for organizations that want to maintain Active Directory as their primary source of truth for user identities while leveraging Salesforce's cloud capabilities. It simplifies user management and enhances security by reducing the number of separate credentials users need to maintain.
 
 
-|Flow|User Type|Grant Type|Type|
-|----|---------|----------|----|
-|Web Server Flow|External/Internal|Authorization Code|Other|
-|User-Agent Flow|External/Internal|Implicit|Other|
-|JWT Bearer Token Flow|Internal|Neither (JWT)|Server-to-Server|
-|Refresh Token Flow|External/Internal|Neither (Refresh)|Other|
-|Device Flow|External/Internal|Authorization Code (modified)|Other|
-|SAML Assertion Flow|External/Internal|Neither (SAML)|Other|
-|Client Credentials Flow|Internal|Neither (Client Credentials)|Server-to-Server|
-
 
 **SAML Sequence Diagrams for Service Provider (SP) Initiated and Identity Provider (IdP) Initiated Setups**
 1. **Service Provider (SP) Initiated SSO**
@@ -521,3 +511,14 @@ Summary
 - SP-Initiated SSO: The process starts at the Service Provider, which redirects the user to the Identity Provider for authentication.
 - IdP-Initiated SSO: The process starts at the Identity Provider, which authenticates the user and then redirects them to the Service Provider with a SAML response.
 These sequence diagrams illustrate the typical steps involved in each flow, highlighting the interactions between the user, the Service Provider, and the Identity Provider.
+
+|Flow|User Type|Grant Type|Type|Use Case|Application Type|
+|----|---------|----------|----|--------|----------------|
+|JWT Bearer Token Flow|Internal|JWT|Server-to-Server|Server-to-server communication|Server|
+|Client Credentials Flow|Internal|Client Credentials|Server-to-Server|Server-to-server communication|Server|
+|Web Server Flow|Internal/External|Authorization Code||Web and mobile applications with server-side components (with PKCE for mobile)|Desktop/Mobile|
+|User-Agent Flow|Internal/External|Implicit||Single-page or client-side applications|Desktop/Mobile|
+|Refresh Token Flow|Internal/External|Refresh||Long-lived sessions|Desktop/Mobile|
+|Device Flow|Internal/External|Authorization Code (modified)||Devices with limited input capabilities|Desktop/IoT|
+|SAML Assertion Flow|Internal/External|SAML||Federated identity scenarios|Desktop/Mobile|
+![image](https://github.com/user-attachments/assets/5b1f78e2-6370-43b3-9ad1-76f4b0f9c871)
