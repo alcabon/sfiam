@@ -430,17 +430,17 @@ Thank you for pointing out the missing PKCE component. This version of the diagr
 
 
 **Salesforce Identity Connect** is a solution that integrates Microsoft Active Directory (AD) with Salesforce, allowing for seamless user authentication and synchronization between the two systems. Here are some key points about Identity Connect:
-    - Purpose: It bridges the gap between on-premises Active Directory and Salesforce's cloud-based identity management.
-    - User Synchronization: Identity Connect keeps user information in sync between Active Directory and Salesforce, ensuring that changes in AD are reflected in Salesforce.
-    - Single Sign-On (SSO): It enables SSO capabilities, allowing users to log in to Salesforce using their Active Directory credentials.
-    - Just-in-Time Provisioning: When a user authenticates for the first time, Identity Connect can automatically create or update the user's account in Salesforce.
-    - Password Synchronization: It can optionally synchronize passwords between AD and Salesforce, though this is generally not recommended for security reasons.
-    - Scheduled Synchronization: Administrators can set up scheduled sync jobs to ensure that user data remains up-to-date.
-    - Attribute Mapping: It allows for flexible mapping of AD attributes to Salesforce fields.
-    - Security: Identity Connect supports secure communication protocols and can be configured to work with firewalls and proxies.
-    - Licensing: It's a separately licensed product from Salesforce, not included in standard Salesforce licenses.
-    - Deployment: It's typically installed on-premises, close to the Active Directory servers for optimal performance.
-    - Identity Connect is particularly useful for organizations that want to maintain Active Directory as their primary source of truth for user identities while leveraging Salesforce's cloud capabilities. It simplifies user management and enhances security by reducing the number of separate credentials users need to maintain.
+    1. Purpose: It bridges the gap between on-premises Active Directory and Salesforce's cloud-based identity management.
+    2. User Synchronization: Identity Connect keeps user information in sync between Active Directory and Salesforce, ensuring that changes in AD are reflected in Salesforce.
+    3. Single Sign-On (SSO): It enables SSO capabilities, allowing users to log in to Salesforce using their Active Directory credentials.
+    4. Just-in-Time Provisioning: When a user authenticates for the first time, Identity Connect can automatically create or update the user's account in Salesforce.
+    5. Password Synchronization: It can optionally synchronize passwords between AD and Salesforce, though this is generally not recommended for security reasons.
+    6. Scheduled Synchronization: Administrators can set up scheduled sync jobs to ensure that user data remains up-to-date.
+    7. Attribute Mapping: It allows for flexible mapping of AD attributes to Salesforce fields.
+    8. Security: Identity Connect supports secure communication protocols and can be configured to work with firewalls and proxies.
+    9. Licensing: It's a separately licensed product from Salesforce, not included in standard Salesforce licenses.
+    10. Deployment: It's typically installed on-premises, close to the Active Directory servers for optimal performance.
+    11. Identity Connect is particularly useful for organizations that want to maintain Active Directory as their primary source of truth for user identities while leveraging Salesforce's cloud capabilities. It simplifies user management and enhances security by reducing the number of separate credentials users need to maintain.
 
 
 |Flow|User Type|Grant Type|Type|
