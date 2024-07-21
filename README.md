@@ -531,11 +531,11 @@ These sequence diagrams illustrate the typical steps involved in each flow, high
 
 
 **"headless" in the context of headless flows typically means:**
-    - No User Interface: Headless flows operate without a graphical user interface (GUI). They are designed to run in the background without direct user interaction .
-    - Automation Without Screens: In Salesforce, headless flows allow triggering of flows from workflows without the need for screens, essentially enabling declarative programming .
-    - Backend Processing: These flows are used for backend processes and integrations where visual interaction is not necessary or possible .    
-    - API-Driven: Headless flows are often controlled and executed through API calls rather than through a user interface .
-    - Separation of Logic from Presentation: In content management systems (CMS), headless flows allow for the separation of content management logic from the presentation layer 
-    - Server-Side Execution: Headless flows typically run on the server-side, making them suitable for automation tasks, background processes, and integrations with other systems .
-    - Used by Non-UI Clients: The headless flow executor is used by clients that don't have access to the web interface, such as LDAP and Radius outposts for user authentication .
-    **In essence, "headless" in this context refers to the ability to execute processes, workflows, or authentication flows without a user-facing interface, focusing on backend operations and integrations.**
+- No User Interface: Headless flows operate without a graphical user interface (GUI). They are designed to run in the background without direct user interaction .
+- Automation Without Screens: In Salesforce, headless flows allow triggering of flows from workflows without the need for screens, essentially enabling declarative programming .
+- Backend Processing: These flows are used for backend processes and integrations where visual interaction is not necessary or possible .    
+- API-Driven: Headless flows are often controlled and executed through API calls rather than through a user interface .
+- Separation of Logic from Presentation: In content management systems (CMS), headless flows allow for the separation of content management logic from the presentation layer 
+- Server-Side Execution: Headless flows typically run on the server-side, making them suitable for automation tasks, background processes, and integrations with other systems .
+- Used by Non-UI Clients: The headless flow executor is used by clients that don't have access to the web interface, such as LDAP and Radius outposts for user authentication .
+**In essence, "headless" in this context refers to the ability to execute processes, workflows, or authentication flows without a user-facing interface, focusing on backend operations and integrations.**
